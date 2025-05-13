@@ -3,15 +3,23 @@ import numpy as np
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 from PIL import Image
-import json
 
 # Load model
 model = load_model("plant_classification.h5")
 
-# Load class indices from training
-with open(r"C:\Users\janap\Desktop\class_indices.json", "r") as f:
-    class_indices = json.load(f)
-class_labels = {v: k for k, v in class_indices.items()}
+# Class labels (hardcoded instead of loading from JSON)
+class_labels = {
+    0: "Alstonia Scholaris (P2)",
+    1: "Arjun (P1)",
+    2: "Chinar (P11)",
+    3: "Gauva (P3)",
+    4: "Jamun (P5)",
+    5: "Jatropha (P6)",
+    6: "Lemon (P10)",
+    7: "Mango (P0)",
+    8: "Pomegranate (P9)",
+    9: "Pongamia Pinnata (P7)"
+}
 
 # Prediction function
 def predict(img):
